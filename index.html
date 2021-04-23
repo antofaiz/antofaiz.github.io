@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
 
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
 
@@ -49,7 +50,7 @@
     <section class="jumbotron text-center">
       <img src="img/luxury.png" alt="Gojo Satoru" width="200px" class="rounded-circle img-thumbnail" />
       <h1 class="display-4">Gojo Satoru</h1>
-      <p class="lead">Sensei | Demon Killer</p>
+      <p class="lead"></p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffffff"
@@ -69,13 +70,13 @@
           </div>
         </div>
         <div class="row justify-content-center fs-5">
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-right">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quasi laboriosam cupiditate quas, molestiae totam mollitia consectetur ullam esse debitis eligendi at. Impedit id unde mollitia laboriosam eum nihil quia minus at
               accusamus. Mollitia temporibus totam facere aliquid, saepe rerum.
             </p>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-left" data-aos-delay="200">
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse quasi, dicta fugit commodi officia expedita itaque eaque facere reiciendis pariatur eum! Iusto ex amet natus eum quae tenetur, officia ab.</p>
           </div>
         </div>
@@ -96,12 +97,12 @@
       <div class="container">
         <div class="row text-center mb-3">
           <div class="col">
-            <h1>Gallery</h1>
+            <h1>Projects</h1>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="col-md-4 mb-3">
-            <div class="card">
+            <div class="card" data-aos="fade-down">
               <img src="img/kid.png" class="card-img-top" alt="..." />
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -109,7 +110,7 @@
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <div class="card">
+            <div class="card" data-aos="fade-down">
               <img src="img/men.png" class="card-img-top" alt="..." />
               <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -194,6 +195,34 @@
     </footer>
 
     <!-- AKHIR FOOTER -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+      const projectImg = document.querySelectorAll(".card");
+      projectImg.forEach((img, i) => {
+        img.dataset.aos = "fade-down";
+        img.dataset.aosDelay = i * 100;
+      });
+    </script>
+
+    <script>
+      AOS.init({
+        duration: 1000,
+        mirror: true,
+      });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.from(".jumbotron img", { duration: 1, y: -100, opacity: 0 });
+      gsap.from(".jumbotron h1", { duration: 1, opacity: 0, x: -100 });
+      gsap.from(".navbar", { duration: 1.5, y: -100, ease: "bounce" });
+      gsap.to(".lead", { duration: 1, delay: 1.5, text: "Sensei | Demon Killer" });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
     <script>
